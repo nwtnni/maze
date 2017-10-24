@@ -66,8 +66,7 @@ class Maze:
         return self
 
     def is_wall(self, p, d):
-        a, b = self.get_adj(p, d)
-        return a.is_wall(d) and b.is_wall(opp(d))
+        return p.inside(self.maze).is_wall(d)
 
     def create(self, p, d):
         self.set_wall(p, d, True)
@@ -97,7 +96,7 @@ class Maze:
         return p
 
     def center(self): 
-        return Point(self.w / 2, self.h / 2)
+        return Point(int(self.w / 2), int(self.h / 2))
 
     def __repr__(self):
         line = "-----".join(["+" for tile in range(self.w + 1)]) + "\n"
