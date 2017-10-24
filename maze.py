@@ -14,12 +14,12 @@ class Point:
         self.x = x
         self.y = y
 
-    def get(self, arr): return arr[y][x]
+    def get(self, arr): return arr[self.y][self.x]
 
     def adj(self, d):
-        if   d == D.N: return Point(self.x, self.y + 1)
+        if   d == D.N: return Point(self.x, self.y - 1)
         elif d == D.E: return Point(self.x + 1, self.y)
-        elif d == D.S: return Point(self.x, self.y - 1)
+        elif d == D.S: return Point(self.x, self.y + 1)
         elif d == D.W: return Point(self.x - 1, self.y)
     def __repr__(self): return "(" + str(self.x) + ", " + str(self.y) + ")"
 
@@ -47,23 +47,26 @@ class Maze:
         return (a, b)
 
     def set(self, p, d, wall):
-        a, b = get(self, p, d)
-        a.set(d, wall)       
-        b.set(opp(d), wall)
+        if self.in_bounds(p) and self.in_bounds(p.adj(d)):
+            a, b = self.get(p, d)
+            a.set(d, wall)       
+            b.set(opp(d), wall)
         return self
 
     def is_wall(self, p, d):
-        a, b = get(self, p, d)
+        a, b = self.get(p, d)
         return a.get(d) and b.get(opp(d))
 
     def create(self, p, d):
-        set(self, p, d, True)
+        self.set(p, d, True)
+        return self
 
     def carve(self, p, d):
-        set(self, p, d, False)
+        self.set(p, d, False)
+        return self
 
     def in_bounds(self, p):
-        return (p.x >= 0 and p.x < self.w and p.y >= 0 and p.y < self.w)
+        return (p.x >= 0 and p.x < self.w and p.y >= 0 and p.y < self.h)
 
     def rand_neighbor(self, p):
         while True: 
@@ -79,10 +82,15 @@ class Maze:
             if self.in_bounds(p): break
         return p
 
-if __name__ == "__main__":
-    m = Maze(10, 10) 
+    def __repr__(self):
+        line = "-----".join(["+" for tile in range(self.w + 1)]) + "\n"
+        rep = line
+        for row in self.maze: 
+            v = "     ".join(["|" if tile.get(D.W) else " " for tile in row]) + "     |\n"
+            h = "+" + "+".join(["-----" if tile.get(D.S) else "     " for tile in row]) + "+\n"
+            rep = rep + v*2 + h
+        return rep
 
-    for i in range(20):
-        p = m.rand_point()
-        print(p)
-        print("\t" + str(m.rand_neighbor(p)))
+if __name__ == "__main__":
+    m = Maze(5, 5) 
+    print(m.carve(Point(1, 1), D.W).carve(Point(3, 0), D.S))
