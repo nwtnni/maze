@@ -30,7 +30,7 @@ class Point:
         return False
     
     def __ne__(self, other):
-        return not __eq__(self, other)
+        return not self.__eq__(other)
 
     def __hash__(self):
         return self.x * self.y
@@ -85,6 +85,9 @@ class Maze:
         shuffle(l)
         return l
 
+    def reachable(self, p):
+        return [d for d in self.neighbors(p) if not self.is_wall(p, d)]
+
     def rand_point(self):
         while True:
             x = randint(0, self.w - 1)
@@ -92,6 +95,9 @@ class Maze:
             p = Point(x, y)
             if self.valid(p): break
         return p
+
+    def center(self): 
+        return Point(self.w / 2, self.h / 2)
 
     def __repr__(self):
         line = "-----".join(["+" for tile in range(self.w + 1)]) + "\n"
