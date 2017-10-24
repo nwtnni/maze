@@ -4,7 +4,7 @@ from collections import defaultdict
 from matplotlib import collections as mc
 import matplotlib.pyplot as plt
 import matplotlib.patches as p
-from binary import generate
+from dfs import generate
 
 def search(maze, s):
     distance = defaultdict(lambda: float("inf"))
@@ -76,7 +76,7 @@ def heat(maze, s):
     patches = []
     colors = []
     d, r = search(maze, s)
-    scale = max(d.values())
+    scale = max(d.values()) * 1.5
 
     for y in range(maze.h):
         for x in range(maze.w):
@@ -91,8 +91,9 @@ def draw_sol(maze, s, f):
     plot([outline(maze), solution(maze, s, f)])
 
 def draw_heat(maze, s):
-    plot([outline(maze), heat(maze, maze.center())])
+    plot([outline(maze), heat(maze, s)])
 
 if __name__ == "__main__":
     m = generate(50, 50)
-    draw_heat(m, Point(0, 0))
+    draw_heat(m, m.center())
+
