@@ -3,28 +3,29 @@ adj	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def adj(self, d):
 carve	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def carve(self, p, d):$/;"	m	language:Python	class:Maze
 create	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def create(self, p, d):$/;"	m	language:Python	class:Maze
 D	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^class D(IntEnum):$/;"	c	language:Python
-DFS	/home/nwtnni/Dropbox/School/cs/projects/maze/dfs.py	/^class DFS:$/;"	c	language:Python
 E	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    E = 1$/;"	v	language:Python	class:D
-generate	/home/nwtnni/Dropbox/School/cs/projects/maze/dfs.py	/^    def generate(self, maze):$/;"	m	language:Python	class:DFS
-get	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def get(self, arr): return arr[self.y][self.x]$/;"	m	language:Python	class:Point
-get	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def get(self, d): $/;"	m	language:Python	class:Tile
-get	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def get(self, p, d):$/;"	m	language:Python	class:Maze
-in_bounds	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def in_bounds(self, p):$/;"	m	language:Python	class:Maze
+generate	/home/nwtnni/Dropbox/School/cs/projects/maze/dfs.py	/^def generate(w, h):$/;"	f	language:Python
+get_adj	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def get_adj(self, p, d):$/;"	m	language:Python	class:Maze
+inside	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def inside(self, arr): return arr[self.y][self.x]$/;"	m	language:Python	class:Point
+is_wall	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def is_wall(self, d): $/;"	m	language:Python	class:Tile
 is_wall	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def is_wall(self, p, d):$/;"	m	language:Python	class:Maze
-m	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    m = Maze(5, 5) $/;"	v	language:Python	class:Maze
 Maze	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^class Maze: $/;"	c	language:Python
 N	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    N = 0$/;"	v	language:Python	class:D
+neighbors	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def neighbors(self, p):$/;"	m	language:Python	class:Maze
 opp	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^def opp(d): return (d + 2) % 4$/;"	f	language:Python
 Point	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^class Point:$/;"	c	language:Python
-rand_neighbor	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def rand_neighbor(self, p):$/;"	m	language:Python	class:Maze
 rand_point	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def rand_point(self):$/;"	m	language:Python	class:Maze
 S	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    S = 2$/;"	v	language:Python	class:D
-set	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def set(self, d, up): $/;"	m	language:Python	class:Tile
-set	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def set(self, p, d, wall):$/;"	m	language:Python	class:Maze
+set_wall	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def set_wall(self, d, up): $/;"	m	language:Python	class:Tile
+set_wall	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def set_wall(self, p, d, wall):$/;"	m	language:Python	class:Maze
 Tile	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^class Tile:$/;"	c	language:Python
+valid	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def valid(self, p):$/;"	m	language:Python	class:Maze
 W	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    W = 3$/;"	v	language:Python	class:D
+__eq__	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def __eq__(self, other):$/;"	m	language:Python	class:Point	file:
+__hash__	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def __hash__(self):$/;"	m	language:Python	class:Point	file:
 __init__	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def __init__(self):$/;"	m	language:Python	class:Tile
 __init__	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def __init__(self, w, h):$/;"	m	language:Python	class:Maze
 __init__	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def __init__(self, x, y):$/;"	m	language:Python	class:Point
+__ne__	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def __ne__(self, other):$/;"	m	language:Python	class:Point	file:
 __repr__	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def __repr__(self): return "(" + str(self.x) + ", " + str(self.y) + ")"$/;"	m	language:Python	class:Point	file:
 __repr__	/home/nwtnni/Dropbox/School/cs/projects/maze/maze.py	/^    def __repr__(self):$/;"	m	language:Python	class:Maze	file:
