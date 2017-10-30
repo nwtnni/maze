@@ -3,7 +3,7 @@ from time import sleep
 from random import choice
 from maze import *
 
-def generate(w, h, step=True):
+def generate(w, h, step=False):
     maze = Maze(w, h)
     
     # Carving directions
@@ -31,4 +31,4 @@ if __name__ == "__main__":
     if len(argv) != 3:
         print("Usage: python binary.py <WIDTH> <HEIGHT>")
     else:
-        print(generate(int(argv[1]), int(argv[2])))
+        print(generate(int(argv[1]), int(argv[2]), True))
