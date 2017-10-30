@@ -1,8 +1,9 @@
 from sys import argv
+from time import sleep
 from random import choice
 from maze import *
 
-def generate(w, h):
+def generate(w, h, step=True):
     maze = Maze(w, h)
     
     # Carving directions
@@ -21,6 +22,9 @@ def generate(w, h):
             if col == x: maze.carve(p, vd)
             elif row == y: maze.carve(p, hd)
             else: maze.carve(p, choice(d))
+            if step: 
+                print(maze)
+                sleep(0.30)
     return maze
 
 if __name__ == "__main__":

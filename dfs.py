@@ -1,7 +1,8 @@
 from maze import Maze
 from sys import argv
+from time import sleep
 
-def generate(w, h):
+def generate(w, h, step=True):
     maze = Maze(w, h)
     start = maze.rand_point()
     stack = [start]
@@ -16,6 +17,9 @@ def generate(w, h):
                 maze.carve(n, d)
                 stack.append(m)
                 visited.add(m)
+                if step:
+                    print(maze)
+                    sleep(0.30)
                 break
         else:
             stack.pop()
