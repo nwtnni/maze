@@ -1,7 +1,6 @@
 from maze import Point, D
 from collections import defaultdict
 from matplotlib import collections as mc
-from dfs import generate
 import matplotlib.pyplot as plt
 import matplotlib.patches as p
 
@@ -50,7 +49,7 @@ def solve(maze, s, f):
 
 
 def plot(lines, save=False, path="maze"):
-    f, ax = plt.subplots(figsize=(10, 10))
+    f, ax = plt.subplots(figsize=(5, 5))
     plt.axis('off')
     plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
     for lc in lines:
@@ -124,6 +123,5 @@ def save_heat(maze, s, path):
     plot([outline(maze), heat(maze, s)], True, path)
 
 
-if __name__ == "__main__":
-    m = generate(100, 100)
-    draw_heat(m, Point(50, 50))
+def save_all(maze, s, f, path):
+    plot([outline(maze), solution(maze, s, f), heat(maze, s)], True, path)
