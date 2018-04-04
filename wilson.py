@@ -1,7 +1,5 @@
 from maze import Maze, Point
 from random import choice
-from sys import argv
-from time import sleep
 
 
 def prune(path, dirpath):
@@ -13,8 +11,9 @@ def prune(path, dirpath):
     return (path, dirpath)
 
 
-def generate(w, h, step=False):
+def generate(w, h):
     maze = Maze(w, h)
+    yield maze
     n = maze.rand_point()
     unknown = set([Point(x, y) for x in range(w) for y in range(h)])
     unknown.remove(n)
@@ -32,16 +31,5 @@ def generate(w, h, step=False):
 
         for i in range(len(path) - 1):
             maze.carve(path[i], dirpath[i])
-            if step:
-                print(maze)
-                sleep(0.3)
             unknown.remove(path[i])
-
-    return maze
-
-
-if __name__ == "__main__":
-    if len(argv) != 3:
-        print("Usage: python wilson.py <WIDTH> <HEIGHT>")
-    else:
-        print(generate(int(argv[1]), int(argv[2]), True))
+            yield maze
