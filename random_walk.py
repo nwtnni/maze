@@ -1,6 +1,7 @@
-from maze import *
+from maze import Maze
 from sys import argv
 from time import sleep
+
 
 def generate(w, h, step=False):
     maze = Maze(w, h)
@@ -18,6 +19,7 @@ def generate(w, h, step=False):
                 sleep(0.3)
         n = next
     return maze
+
 
 if __name__ == "__main__":
     if len(argv) != 3:

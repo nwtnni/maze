@@ -1,6 +1,7 @@
-from maze import *
+from maze import Point, Maze
 from sys import argv
 from time import sleep
+
 
 def hunt(maze, visited, step):
     for y in range(maze.h):
@@ -14,14 +15,18 @@ def hunt(maze, visited, step):
                     print(maze)
                     sleep(0.30)
                 return n
-    return False
+    return None
+
 
 def kill(maze, n, visited, step):
     while True:
         dirs = maze.neighbors(n)
         free = [d for d in dirs if n.adj(d) not in visited]
-        next = n.adj(dirs[0]) 
-        if len(free) == 0: return            
+        next = n.adj(dirs[0])
+
+        if len(free) == 0:
+            return
+
         elif next not in visited:
             visited.add(next)
             maze.carve(n, dirs[0])
@@ -29,6 +34,7 @@ def kill(maze, n, visited, step):
                 print(maze)
                 sleep(0.30)
         n = next
+
 
 def generate(w, h, step=False):
     maze = Maze(w, h)
@@ -38,11 +44,12 @@ def generate(w, h, step=False):
     while True:
         kill(maze, n, visited, step)
         h = hunt(maze, visited, step)
-        if h == False:
+        if h is None:
             break
         else:
             n = h
     return maze
+
 
 if __name__ == "__main__":
     if len(argv) != 3:

@@ -1,11 +1,12 @@
 from sys import argv
 from time import sleep
 from random import choice
-from maze import *
+from maze import Maze, D, Point
+
 
 def generate(w, h, step=False):
     maze = Maze(w, h)
-    
+
     # Directional bias
     hd = choice([D.E, D.W])
     vd = choice([D.S, D.N])
@@ -16,8 +17,9 @@ def generate(w, h, step=False):
 
     for row in rows[:-1]:
         run = []
+
         for col in cols:
-            run.append(col) 
+            run.append(col)
             if col == cols[-1] or choice(d) == vd:
                 maze.carve(Point(choice(run), row), vd)
                 run.clear()
@@ -26,6 +28,7 @@ def generate(w, h, step=False):
             if step:
                 print(maze)
                 sleep(0.3)
+
     for col in cols:
         maze.carve(Point(col, rows[-1]), hd)
         if step:
@@ -33,6 +36,7 @@ def generate(w, h, step=False):
             sleep(0.3)
 
     return maze
+
 
 if __name__ == "__main__":
     if len(argv) != 3:
